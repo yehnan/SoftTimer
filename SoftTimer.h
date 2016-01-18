@@ -9,7 +9,7 @@
 #endif
 
 #include <inttypes.h>
-#include "EventBase.h"
+#include "utility/EventBase.h"
 
 // EVENTS_MAX defines the max count of events of a Timer object.
 // Valid index of event array 'events'  is from 0 to (EVENTS_MAX - 1),
