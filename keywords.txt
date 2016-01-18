@@ -14,10 +14,6 @@ EventPinState	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-addEvent	KEYWORD2
-removeEvent	KEYWORD2
-removeAllEvents	KEYWORD2
-hasEvent	KEYWORD2
 update KEYWORD2
 schedule	KEYWORD2
 every	KEYWORD2
@@ -25,6 +21,10 @@ once	KEYWORD2
 oscillate	KEYWORD2
 ledBlink	KEYWORD2
 pulse	KEYWORD2
+addEvent	KEYWORD2
+removeEvent	KEYWORD2
+removeAllEvents	KEYWORD2
+hasEvent	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
