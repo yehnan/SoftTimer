@@ -189,11 +189,10 @@ The next example is harder. Because we want to control servo, need to define new
 
 SoftTimer timer;  // create the timer object
 
-Servo myservo;
- 
 class EventServo : public EventBase
 {
 public:
+    Servo myservo;
     int16_t position;
     int16_t incValue;
 };
@@ -204,7 +203,6 @@ static boolean callback_servo_position(EventBase* evt)
 {
     EventServo* e = (EventServo*) evt;
     
-    // make the servo sweep
     e->position += e->incValue;
     if(e->position < 0){
         e->position = 0;
@@ -214,17 +212,17 @@ static boolean callback_servo_position(EventBase* evt)
         e->position = 180;
         e->incValue = -(e->incValue);
     }
-    myservo.write(e->position);
+    e->myservo.write(e->position);
     
     return false;
 }
 
 void setup() 
 { 
-    myservo.attach(SERVO_PIN);
+    event_servo.myservo.attach(SERVO_PIN);
     
     event_servo.period = DELAY;
-    event_servo.repeatCount = -1; // negative means forever
+    event_servo.repeatCount = -1; // forever
     event_servo.period = DELAY;
     event_servo.nextTriggerTime = 0; // if 0, means now
     event_servo.callback = &callback_servo_position;
@@ -239,6 +237,7 @@ void loop()
 { 
     timer.update();
 } 
+
 ```
 
 There are other examples. Please see the code and comments.

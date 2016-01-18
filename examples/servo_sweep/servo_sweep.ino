@@ -11,11 +11,10 @@
 
 SoftTimer timer;  // create the timer object
 
-Servo myservo;
- 
 class EventServo : public EventBase
 {
 public:
+    Servo myservo;
     int16_t position;
     int16_t incValue;
 };
@@ -35,14 +34,14 @@ static boolean callback_servo_position(EventBase* evt)
         e->position = 180;
         e->incValue = -(e->incValue);
     }
-    myservo.write(e->position);
+    e->myservo.write(e->position);
     
     return false;
 }
 
 void setup() 
 { 
-    myservo.attach(SERVO_PIN);
+    event_servo.myservo.attach(SERVO_PIN);
     
     event_servo.period = DELAY;
     event_servo.repeatCount = -1; // forever
