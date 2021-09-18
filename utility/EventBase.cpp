@@ -3,7 +3,7 @@
 EventBase::EventBase(void)
 {
     // use object's address as event id
-    id = (uint16_t) this;
+    id = (intptr_t) this;
     
     repeatCount = 0;
     period = 0;

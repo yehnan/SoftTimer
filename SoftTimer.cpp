@@ -26,7 +26,7 @@ int8_t SoftTimer::findEventIndex(EventBase* evt)
     return EVENTS_MAX;
 }
 
-int16_t SoftTimer::addEvent(EventBase* evt)
+intptr_t SoftTimer::addEvent(EventBase* evt)
 {
     const int8_t i = findFreeEventIndex();
     if(isIndexValid(i)){
@@ -41,7 +41,7 @@ int16_t SoftTimer::addEvent(EventBase* evt)
     return INVALID_EVENT_ID;
 }
 
-boolean SoftTimer::removeEventByIndex(int8_t i)
+bool SoftTimer::removeEventByIndex(int8_t i)
 {
     if(isIndexValid(i)){
         if(events[i]->deleteWhenRemove){
@@ -65,9 +65,9 @@ int16_t SoftTimer::removeAllEvents(void)
 }
 
 // the workhorse of this library
-boolean SoftTimer::update(uint8_t i)
+bool SoftTimer::update(uint8_t i)
 {
-    boolean triggered = false;
+    bool triggered = false;
     
     // trigger or not, by checking time
     if(isIndexValid(i) && millis() >= events[i]->nextTriggerTime){ 
@@ -104,9 +104,9 @@ int16_t SoftTimer::update(void)
     return cnt;
 }
 
-int16_t SoftTimer::schedule(uint32_t period, CB_TYPE callback, int16_t repeatCount, int32_t after)
+intptr_t SoftTimer::schedule(uint32_t period, CB_TYPE callback, int16_t repeatCount, int32_t after)
 {
-    int16_t id = INVALID_EVENT_ID;
+    intptr_t id = INVALID_EVENT_ID;
     const int8_t i = findFreeEventIndex();
     if(isIndexValid(i)){
         EventBase* evt = new EventBase();
@@ -124,7 +124,7 @@ int16_t SoftTimer::schedule(uint32_t period, CB_TYPE callback, int16_t repeatCou
     return id;
 }
 
-static boolean callback_oscillate(EventBase* evt)
+static bool callback_oscillate(EventBase* evt)
 {
     EventPinState* e = (EventPinState*) evt;
     digitalWrite(e->pin, e->state);
@@ -133,9 +133,9 @@ static boolean callback_oscillate(EventBase* evt)
     return false;
 }
 
-int16_t SoftTimer::oscillate(uint8_t pin, uint8_t startingState, uint32_t period, int16_t repeatCount, int32_t after)
+intptr_t SoftTimer::oscillate(uint8_t pin, uint8_t startingState, uint32_t period, int16_t repeatCount, int32_t after)
 {
-    int16_t id = INVALID_EVENT_ID;
+    intptr_t id = INVALID_EVENT_ID;
     const int8_t i = findFreeEventIndex();
     if(isIndexValid(i)){
         EventPinState* evt = new EventPinState();
