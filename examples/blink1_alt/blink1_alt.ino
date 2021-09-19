@@ -11,7 +11,7 @@
 
 SoftTimer timer;  // create the timer object
 
-boolean led_off(EventBase* evt)
+bool led_off(EventBase* evt)
 {
     digitalWrite(LED_PIN, LOW);
     timer.once(led_on, PERIOD_LOW);
@@ -19,7 +19,7 @@ boolean led_off(EventBase* evt)
     return false;
 }
 
-boolean led_on(EventBase* evt)
+bool led_on(EventBase* evt)
 {
     digitalWrite(LED_PIN, HIGH); // light on
     

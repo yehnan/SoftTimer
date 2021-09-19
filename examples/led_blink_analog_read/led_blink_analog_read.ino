@@ -19,7 +19,7 @@ void loop()
     timer.update();
 }
 
-boolean callbackReadAnalog(EventBase* evt)
+bool callbackReadAnalog(EventBase* evt)
 {
     Serial.println(analogRead(READ_PIN));
     

@@ -21,7 +21,7 @@ public:
 
 EventServo event_servo;
 
-static boolean callback_servo_position(EventBase* evt)
+static bool callback_servo_position(EventBase* evt)
 {
     EventServo* e = (EventServo*) evt;
     

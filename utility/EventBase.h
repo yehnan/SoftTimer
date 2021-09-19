@@ -15,14 +15,14 @@ class EventBase;
 // callback function type
 // if callback returns true, will remove the event;
 // if returns false, continue...
-typedef boolean (*CB_TYPE)(EventBase*);
+typedef bool (*CB_TYPE)(EventBase*);
 
 class EventBase
 {
 public:
     EventBase(void);
     
-    int16_t id;
+    intptr_t id;
     
     int repeatCount; // negative(like -1): forever, 0: stopped, 
     uint32_t period;
@@ -30,7 +30,7 @@ public:
     
     CB_TYPE callback;
 
-    boolean deleteWhenRemove; // if true, let class Timer handle the memory management 
+    bool deleteWhenRemove; // if true, let class Timer handle the memory management 
 };
 
 class EventPinState : public EventBase

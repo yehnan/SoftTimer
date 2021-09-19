@@ -27,7 +27,7 @@ void loop()
     timer.update();
 }
 
-boolean callbackTick(EventBase* evt)
+bool callbackTick(EventBase* evt)
 {
     const unsigned long now = millis();
     Serial.print("2 second tick event: millis()=");
@@ -46,7 +46,7 @@ boolean callbackTick(EventBase* evt)
 }
 
 
-boolean callbackOnce(EventBase* evt)
+bool callbackOnce(EventBase* evt)
 {
     Serial.println("In the callback function of once event.");
     Serial.println("Stop the original led event(slow blink).");

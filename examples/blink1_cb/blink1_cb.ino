@@ -10,7 +10,7 @@ int led_state = HIGH;
 
 SoftTimer timer;  // create the timer object
 
-boolean callback(EventBase* evt)
+bool callback(EventBase* evt)
 {
     Serial.print("LED state = ");
     Serial.println(led_state);
